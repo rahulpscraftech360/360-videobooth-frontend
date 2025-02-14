@@ -1,17 +1,21 @@
 // App.jsx
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import ButtonScreen from './components/ButtonScreen';
+import CaptureScreen from './components/CaptureScreen';
 import FormScreen from './components/FormScreen';
-import VideoScreen from './screens/VideoScreen';
+import IdleScreen from './components/IdleScreen';
+import SuccessScreen from './components/SuccessScreen';
+
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<FormScreen />} />
-           {/* <Route path="/" element={<ButtonScreen />} /> */}
-        <Route path="/buttons" element={<ButtonScreen />} />
-        <Route path="/video" element={<VideoScreen />} />
+      <Route path="/" element={<IdleScreen />} />
+        <Route path="/form" element={<FormScreen />} />
+        <Route path="/camera" element={<CaptureScreen />} />
+
+           <Route path="/success" element={<SuccessScreen />} />
+       
       </Routes>
     </Router>
   );

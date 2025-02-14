@@ -1,52 +1,5 @@
-// // FormScreen.jsx
-// import axios from 'axios';
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 
-// export default function FormScreen() {
-//   const [formData, setFormData] = useState({ name: '', email: '' });
-//   const navigate = useNavigate();
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//         await axios.post('http://localhost:5000/api/users', formData);
-//       navigate('/buttons');
-//     } catch (error) {
-//       console.error('Submission failed:', error);
-//     }
-//   };
-
-//   return (
-//     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-//       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
-//         <input
-//           type="text"
-//           placeholder="Name"
-//           required
-//           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-//           className="w-full p-2 mb-4 border border-gray-300 rounded"
-//         />
-//         <input
-//           type="email"
-//           placeholder="Email"
-//           required
-//           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-//           className="w-full p-2 mb-4 border border-gray-300 rounded"
-//         />
-//         <button
-//           type="submit"
-//           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-//         >
-//           Submit
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
-// FormScreen.jsx
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -57,41 +10,55 @@ export default function FormScreen() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await axios.post('http://localhost:5000/api/users', formData);
-      document.activeElement.blur(); // Close keyboard on submit
-      navigate('/buttons');
+    
+      navigate('/camera'); // Navigate to the camera screen or any other screen
     } catch (error) {
       console.error('Submission failed:', error);
     }
   };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-3">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 className="text-xl font-bold mb-4 text-center text-gray-700">User Form</h2>
-        <input
-          type="text"
-          placeholder="Name"
-          required
-          onFocus={(e) => e.target.setAttribute('inputmode', 'text')}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          onFocus={(e) => e.target.setAttribute('inputmode', 'email')}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-200"
-        >
-          Submit
-        </button>
-      </form>
+  return  (
+    <div 
+    className="flex items-center justify-center min-h-screen bg-center bg-cover" 
+    style={{ backgroundImage: 'url(/images/iPad.png)' }}
+  >
+      <div className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <form onSubmit={handleSubmit} className="w-full mt-50 ">
+          <input
+            type="text"
+            placeholder="Enter your name"
+            className="block w-full  px-4 py-3 mt-2 text-xl font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow appearance-none focus:outline-none focus:ring-blue-600 focus:border-blue-600 peer"
+            style={{ fontFamily: 'Arial, sans-serif', height: '75px' ,  backgroundImage: 'url(/images/bluebutton.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',}}
+          />
+          <input
+            type="email"
+            placeholder="  Enter your email"
+            className="block w-full px-4 py-3 mt-5 text-xl font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow appearance-none focus:outline-none focus:ring-blue-600 focus:border-blue-600 peer"
+            style={{ fontFamily: 'Arial, sans-serif', height: '75px',backgroundImage: 'url(/images/bluebutton.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',}} // Added height and font style
+         
+          />
+            <button
+            className="w-[250px] h-[60px] sm:w-[200px] sm:h-[50px] lg:w-[300px] lg:h-[70px] px-4 py-2 mt-6 font-bold text-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
+            style={{
+              backgroundImage: 'url(/images/redbutton.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              width: '350px', // Adjust width as needed
+              height: '75px', // Adjust height as needed // Adjust height as needed
+              fontFamily: 'Arial, sans-serif',
+              border: 'none', // Remove default button border
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', // Add shadow for better visibility
+            }}
+            type="submit"
+          >
+            Continue
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -67,14 +67,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function FormScreen() {
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', gender: '' });
   const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       console.log('Form submitted:', formData); // Debugging log
-      navigate('/camera', { state: { name: formData.name, email: formData.email } });
+      navigate('/select-character', { state: { name: formData.name, email: formData.email, gender: formData.gender } });
     } catch (error) {
       console.error('Submission failed:', error);
     }
@@ -107,6 +108,17 @@ export default function FormScreen() {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
+           <select
+            className="block w-full px-4 py-3 mt-5 text-xl font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow appearance-none focus:outline-none focus:ring-blue-600 focus:border-blue-600 peer"
+            style={{ fontFamily: 'Arial, sans-serif', height: '75px', backgroundImage: 'url(/images/bluebutton.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+            value={formData.gender}
+            onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+          >
+            <option value="" disabled>  Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            
+          </select>
           <button
             className="w-[250px] h-[60px] sm:w-[200px] sm:h-[50px] lg:w-[300px] lg:h-[70px] px-4 py-2 mt-6 font-bold text-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
             style={{

@@ -10,8 +10,8 @@ export default function SelectCharacter() {
 
   // Character images based on gender
   const characters = {
-    male: ['/images/male_1.jpeg', '/images/male_2.jpeg', '/images/male_3.jpeg', '/images/male_4.jpeg', '/images/male_5.jpeg'],
-    female: ['/images/female_1.jpeg', '/images/female_2.jpeg', '/images/female_3.jpeg', '/images/female_4.jpeg', '/images/female_5.jpeg'],
+    male: ['/images/male_1.jpeg', '/images/male_2.jpeg', ],
+    female: ['/images/female_1.jpeg', '/images/female_2.jpeg',],
   };
 
   const handleCharacterSelect = (character) => {

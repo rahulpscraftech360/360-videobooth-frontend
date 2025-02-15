@@ -1,18 +1,30 @@
-import { useNavigate } from 'react-router-dom';
-
+import { useState } from "react";
+import { useNavigate, } from 'react-router-dom';
 export default function IdleScreen() {
   const navigate = useNavigate();
-
+  const [fullscreen, setFullscreen] = useState(false);
   const handleStart = () => {
     navigate('/form'); // Navigate to the form screen or any other screen
   };
-
+  const toggleFullSceen = () => {
+    if (!document.fullscreenElement) {
+      console.log(document.documentElement.requestFullscreen());
+      document.documentElement.requestFullscreen();
+      setFullscreen(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        setFullscreen(false);
+      }
+    }
+  };
   return (
     
         <div
           className="flex items-center justify-center min-h-screen bg-center bg-cover relative"
           style={{ backgroundImage: 'url(/images/Idlescreen.png)' }}
         >
+ss
           {/* Button positioned at the bottom 30% of the screen */}
           <div className="absolute bottom-[20%] w-full flex justify-center">
             <button

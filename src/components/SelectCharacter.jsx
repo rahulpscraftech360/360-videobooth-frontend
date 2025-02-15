@@ -10,8 +10,8 @@ export default function SelectCharacter() {
 
   // Character images based on gender
   const characters = {
-    male: ['/images/male_1.jpeg', '/images/male_2.jpeg', ],
-    female: ['/images/female_1.jpeg', '/images/female_2.jpeg',],
+    male: ['/images/male_1.jpeg', '/images/male_2.jpeg'],
+    female: ['/images/female_1.jpeg', '/images/female_2.jpeg'],
   };
 
   const handleCharacterSelect = (character) => {
@@ -33,38 +33,37 @@ export default function SelectCharacter() {
       className="flex items-center justify-center min-h-screen bg-center bg-cover"
       style={{ backgroundImage: 'url(/images/iPad.png)' }}
     >
-      <div className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-4xl mt-20 font-semibold text-white mb-8" style={{ fontFamily: 'Arial, sans-serif' }}>
+      <div className="flex flex-col items-center justify-center w-full flex-1 px-4 sm:px-20 text-center">
+        <h1 className="text-2xl sm:text-4xl mt-10 sm:mt-20 font-semibold text-white mb-4 sm:mb-8" style={{ fontFamily: 'Arial, sans-serif' }}>
           SELECT YOUR CHARACTER
         </h1>
 
         <div className="flex flex-wrap justify-center gap-4">
           {characters[gender].map((character, index) => (
-            <img
-              key={index}
-              src={character}
-              alt={`Character ${index + 1}`}
-              className={`w-32 h-32 cursor-pointer rounded-lg ${
-                selectedCharacter === character ? 'border-4 border-blue-500' : ''
-              }`}
-              onClick={() => handleCharacterSelect(character)}
-            />
+          <img
+          key={index}
+          src={character}
+          alt={`Character ${index + 1}`}
+          className={`h-48 sm:h-72 w-auto cursor-pointer rounded-lg ${
+            selectedCharacter === character ? 'border-4 border-blue-500' : ''
+          } object-cover`}
+          onClick={() => handleCharacterSelect(character)}
+        />
           ))}
         </div>
 
         <button
-          className="w-[250px] h-[60px] sm:w-[200px] sm:h-[50px] lg:w-[300px] lg:h-[70px] px-4 py-2 mt-6 font-bold text-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
+          className="w-full sm:w-[350px] px-4 py-2 mt-6 font-bold text-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline"
           style={{
             backgroundImage: 'url(/images/redbutton.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            width: '350px', // Adjust width as needed
-            height: '75px', // Adjust height as needed // Adjust height as needed
+            height: '60px', // Adjust height as needed
             fontFamily: 'Arial, sans-serif',
             border: 'none', // Remove default button border
-            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', 
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
             fontWeight: 'bold', // Use fontWeight instead of font: 'bold'
-            fontSize: '24px', // Increase font size
+            fontSize: '20px', // Adjust font size for mobile
           }}
           onClick={handleSubmit}
         >

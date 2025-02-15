@@ -30,47 +30,14 @@ export default function CaptureScreen() {
   const [mediaStream, setMediaStream] = useState(null);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
-  const getPromptsForCharacter = (character) => {
-    let BackgroundPrompt = "";
-    let CharacterPrompt = "";
-  
-    switch (character) {
-      case "/images/male_1.jpeg":
-        BackgroundPrompt ="\"0\": \"Front view - A grand celestial battlefield bathed in golden sunlight, with floating ruins of an ancient empire suspended in the sky. Molten cracks run along the marble ground, pulsating with radiant energy. Ethereal embers drift through the air, casting a warm glow. Volumetric lighting, ultra-detailed, 8K fantasy landscape.\",\n  \n  \"15\": \"Right-side profile view - A vast horizon where the sky blends from deep oranges to dark blues, resembling an eternal dusk. Towering celestial spires reach into the heavens, each adorned with glowing sigils. The air is thick with cosmic energy, and faint silhouettes of divine beings watch from afar. Hyper-detailed, cinematic, 8K fantasy backdrop.\",\n  \n  \"30\": \"Back view - A divine citadel floating above an endless sea of golden clouds, its towers reflecting the light of a burning sun. Massive celestial gates loom in the distance, partially open, revealing the abyss of time itself. The winds swirl with golden dust, creating an ethereal atmosphere. Ultra-realistic, 8K high-fantasy setting.\",\n  \n  \"45\": \"Left-side profile view - The remnants of a celestial battlefield, where shattered weapons and fallen banners are half-buried in glowing embers. The sky flickers with unstable rifts, where glimpses of different dimensions can be seen. Volumetric god rays pierce through the dust-laden air, adding to the divine yet haunting scenery. Hyper-detailed, cinematic, 8K otherworldly landscape.\",\n  \n  \"60\": \"Front view - A grand cosmic forge suspended in an infinite void, where streams of molten gold flow from floating islands, shaping divine weapons in mid-air. The Sentinel stands before a titanic anvil, glowing with the heat of a newborn star. The background pulsates with celestial energy, giving a sense of boundless power. 8K ultra-detailed, cinematic, godly atmosphere.\",\n  \n  \"75\": \"Right-side profile view - A sacred temple carved into the heart of a dying sun, its massive pillars glowing with ancient inscriptions. Solar flares burst in the distance, casting dynamic shadows across the marble floor. The air is thick with divine energy, creating a gravity-defying aura where embers float effortlessly. Hyper-detailed, cinematic, 8K celestial environment.\",\n  \n  \"90\": \"Back view - A bridge of light stretching across the cosmos, leading toward the Celestial Throne—a colossal, radiant structure suspended in deep space. Stars swirl in slow motion behind it, forming a nebula in the shape of a divine sigil. The air crackles with pure energy, and distant echoes of forgotten deities whisper through the void. Ultra-realistic, 8K cosmic fantasy backdrop.\",\n  \n  \"105\": \"Left-side profile view - The heart of an eternal storm, where lightning infused with celestial fire dances across a sky of swirling nebulae. Massive floating islands drift through the chaotic winds, each marked with the scars of ancient wars. Solaris Sentinel stands at the edge of one, overlooking the battlefield of gods. Hyper-detailed, cinematic, 8K high-fantasy background.\",\n  \n  \"120\": \"Front view - A divine council chamber at the peak of existence, surrounded by colossal statues of forgotten deities. A sacred flame burns in the center, casting long shadows across the crystalline walls. The floor is engraved with shifting cosmic patterns, glowing in response to the Sentinel’s presence. 8K ultra-detailed, cinematic, god-tier fantasy setting.\"\n",
-
-        CharacterPrompt = "\n  \"0\": \"Front view - A noble warrior with a face chiseled from years of battle, his golden eyes radiating with the power of the eternal flame. His flowing, fiery-orange hair seems to glow like embers, and his sun-kissed skin is etched with ancient, glowing sigils. His expression is resolute, carrying the weight of a thousand victories. His radiant golden armor is intricately detailed with celestial engravings, reflecting the light of an unseen sun. Hyper-realistic, ultra-detailed, cinematic lighting, 8K masterpiece.\",\n  \n  \"15\": \"Right-side profile view - Solaris Sentinel’s sharp features are highlighted by the warm glow of his burning aura. His golden eyes gleam with wisdom and intensity, framed by a strong jawline and high cheekbones. His regal, battle-worn armor shimmers, covered in delicate celestial etchings that pulse with fiery energy. Volumetric lighting, hyper-detailed, ultra-realistic, 8K cinematic fantasy portrait.\",\n  \n  \"30\": \"Back view - Solaris Sentinel stands with his back to the viewer, his long, ember-like hair cascading down his gilded armor, flickering like a living flame. His broad shoulders exude strength, and his celestial cape, woven from strands of pure sunlight, flows with an ethereal radiance. The intricate engravings on the back of his armor glow with molten energy, pulsating in sync with his divine presence. The scene emphasizes his godly stature, making him appear as an unstoppable force of cosmic power. Hyper-detailed, cinematic, ultra-realistic, 8K fantasy composition.\",\n  \n  \"45\": \"Left-side profile view - Solaris Sentinel’s hair flows in slow motion, as if caught in a perpetual updraft of heat. His jawline is sharp, and his expression is calm yet fierce. The celestial runes inscribed across his skin glow brighter, resonating with an unseen force. The atmosphere around him wavers, bending to his divine energy. Hyper-realistic, 8K cinematic masterpiece.\",\n  \n  \"60\": \"Front view - The full intensity of Solaris Sentinel’s gaze pierces through the viewer’s soul. His golden eyes shine like miniature suns, and his battle-worn armor reflects the infinite energy of the celestial forge. His aura radiates an overwhelming sense of warmth and power, as if standing in the presence of a divine being. Hyper-realistic, ultra-detailed, cinematic 8K godlike fantasy portrait.\",\n  \n  \"75\": \"Right-side profile view - A different angle of Solaris Sentinel, with his celestial crown catching the divine light. His expression is both powerful and serene, exuding wisdom. His golden armor reflects the cosmic energy surrounding him, and faint embers float in the air. Hyper-realistic, ultra-detailed, cinematic 8K fantasy portrait.\",\n  \n  \"90\": \"Back view - Solaris Sentinel’s long, ember-like hair cascades down his gilded armor, flickering like a living flame. His cape, woven from strands of pure sunlight, flows with a supernatural radiance. The air behind him shimmers with golden embers, trailing in his wake. Hyper-detailed, cinematic, 8K resolution, godly presence.\",\n  \n  \"105\": \"Left-side profile view - Solaris Sentinel, his determined gaze looking into the distance. His fiery hair moves gently with a celestial breeze, and the glowing sigils on his armor pulsate with power. His battle-worn armor carries the mark of countless victories. Hyper-detailed, cinematic, ultra-realistic, 8K fantasy portrait.\",\n  \n  \"120\": \"Front view - Solaris Sentinel stands with an ethereal glow surrounding him. His piercing golden eyes shine with unwavering conviction, and the celestial sigils carved into his skin pulse with radiant energy. His form seems almost too powerful for this realm, exuding the presence of a guardian from another plane. Hyper-realistic, ultra-detailed, cinematic 8K fantasy portrait.\"\n\n"
-    ;
-        break;
-      case "/images/male_2.jpeg":
-        BackgroundPrompt = "A peaceful countryside with golden fields";
-        CharacterPrompt = "A humble farmer with a straw hat and a gentle smile";
-        break;
-      case "/images/female_1.jpeg":
-        BackgroundPrompt = "A magical forest filled with glowing fireflies";
-        CharacterPrompt = "A mystical sorceress in an enchanted robe";
-        break;
-      case "/images/female_2.jpeg":
-        BackgroundPrompt = "A vibrant futuristic city with neon lights";
-        CharacterPrompt = "A stylish hacker with a high-tech gadget";
-        break;
-      default:
-        BackgroundPrompt = "A default background";
-        CharacterPrompt = "A generic character description";
-    }
-  
-    return { BackgroundPrompt, CharacterPrompt };
-  };
-  
-  const { BackgroundPrompt, CharacterPrompt } = getPromptsForCharacter(character);
   
   // Initialize camera
   useEffect(() => {
     const initializeCamera = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-          video: { facingMode: { exact: "environment" }, aspectRatio: 9 / 16, } 
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: {facingMode:"environment"},
         });
-        
         setMediaStream(stream);
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
@@ -166,6 +133,39 @@ export default function CaptureScreen() {
       } = supabase.storage.from("360video").getPublicUrl(filePath);
       console.log(`video url :${publicUrl}`);
         console.log(`character ${character}`);
+        const getPromptsForCharacter = (character) => {
+          let BackgroundPrompt = "";
+          let CharacterPrompt = "";
+        
+          switch (character) {
+            case "/images/male_1.jpeg":
+              BackgroundPrompt ="\"0\": \"Front view - A grand celestial battlefield bathed in golden sunlight, with floating ruins of an ancient empire suspended in the sky. Molten cracks run along the marble ground, pulsating with radiant energy. Ethereal embers drift through the air, casting a warm glow. Volumetric lighting, ultra-detailed, 8K fantasy landscape.\",\n  \n  \"15\": \"Right-side profile view - A vast horizon where the sky blends from deep oranges to dark blues, resembling an eternal dusk. Towering celestial spires reach into the heavens, each adorned with glowing sigils. The air is thick with cosmic energy, and faint silhouettes of divine beings watch from afar. Hyper-detailed, cinematic, 8K fantasy backdrop.\",\n  \n  \"30\": \"Back view - A divine citadel floating above an endless sea of golden clouds, its towers reflecting the light of a burning sun. Massive celestial gates loom in the distance, partially open, revealing the abyss of time itself. The winds swirl with golden dust, creating an ethereal atmosphere. Ultra-realistic, 8K high-fantasy setting.\",\n  \n  \"45\": \"Left-side profile view - The remnants of a celestial battlefield, where shattered weapons and fallen banners are half-buried in glowing embers. The sky flickers with unstable rifts, where glimpses of different dimensions can be seen. Volumetric god rays pierce through the dust-laden air, adding to the divine yet haunting scenery. Hyper-detailed, cinematic, 8K otherworldly landscape.\",\n  \n  \"60\": \"Front view - A grand cosmic forge suspended in an infinite void, where streams of molten gold flow from floating islands, shaping divine weapons in mid-air. The Sentinel stands before a titanic anvil, glowing with the heat of a newborn star. The background pulsates with celestial energy, giving a sense of boundless power. 8K ultra-detailed, cinematic, godly atmosphere.\",\n  \n  \"75\": \"Right-side profile view - A sacred temple carved into the heart of a dying sun, its massive pillars glowing with ancient inscriptions. Solar flares burst in the distance, casting dynamic shadows across the marble floor. The air is thick with divine energy, creating a gravity-defying aura where embers float effortlessly. Hyper-detailed, cinematic, 8K celestial environment.\",\n  \n  \"90\": \"Back view - A bridge of light stretching across the cosmos, leading toward the Celestial Throne—a colossal, radiant structure suspended in deep space. Stars swirl in slow motion behind it, forming a nebula in the shape of a divine sigil. The air crackles with pure energy, and distant echoes of forgotten deities whisper through the void. Ultra-realistic, 8K cosmic fantasy backdrop.\",\n  \n  \"105\": \"Left-side profile view - The heart of an eternal storm, where lightning infused with celestial fire dances across a sky of swirling nebulae. Massive floating islands drift through the chaotic winds, each marked with the scars of ancient wars. Solaris Sentinel stands at the edge of one, overlooking the battlefield of gods. Hyper-detailed, cinematic, 8K high-fantasy background.\",\n  \n  \"120\": \"Front view - A divine council chamber at the peak of existence, surrounded by colossal statues of forgotten deities. A sacred flame burns in the center, casting long shadows across the crystalline walls. The floor is engraved with shifting cosmic patterns, glowing in response to the Sentinel’s presence. 8K ultra-detailed, cinematic, god-tier fantasy setting.\"\n",
+      
+              CharacterPrompt = "\n  \"0\": \"Front view - A noble warrior with a face chiseled from years of battle, his golden eyes radiating with the power of the eternal flame. His flowing, fiery-orange hair seems to glow like embers, and his sun-kissed skin is etched with ancient, glowing sigils. His expression is resolute, carrying the weight of a thousand victories. His radiant golden armor is intricately detailed with celestial engravings, reflecting the light of an unseen sun. Hyper-realistic, ultra-detailed, cinematic lighting, 8K masterpiece.\",\n  \n  \"15\": \"Right-side profile view - Solaris Sentinel’s sharp features are highlighted by the warm glow of his burning aura. His golden eyes gleam with wisdom and intensity, framed by a strong jawline and high cheekbones. His regal, battle-worn armor shimmers, covered in delicate celestial etchings that pulse with fiery energy. Volumetric lighting, hyper-detailed, ultra-realistic, 8K cinematic fantasy portrait.\",\n  \n  \"30\": \"Back view - Solaris Sentinel stands with his back to the viewer, his long, ember-like hair cascading down his gilded armor, flickering like a living flame. His broad shoulders exude strength, and his celestial cape, woven from strands of pure sunlight, flows with an ethereal radiance. The intricate engravings on the back of his armor glow with molten energy, pulsating in sync with his divine presence. The scene emphasizes his godly stature, making him appear as an unstoppable force of cosmic power. Hyper-detailed, cinematic, ultra-realistic, 8K fantasy composition.\",\n  \n  \"45\": \"Left-side profile view - Solaris Sentinel’s hair flows in slow motion, as if caught in a perpetual updraft of heat. His jawline is sharp, and his expression is calm yet fierce. The celestial runes inscribed across his skin glow brighter, resonating with an unseen force. The atmosphere around him wavers, bending to his divine energy. Hyper-realistic, 8K cinematic masterpiece.\",\n  \n  \"60\": \"Front view - The full intensity of Solaris Sentinel’s gaze pierces through the viewer’s soul. His golden eyes shine like miniature suns, and his battle-worn armor reflects the infinite energy of the celestial forge. His aura radiates an overwhelming sense of warmth and power, as if standing in the presence of a divine being. Hyper-realistic, ultra-detailed, cinematic 8K godlike fantasy portrait.\",\n  \n  \"75\": \"Right-side profile view - A different angle of Solaris Sentinel, with his celestial crown catching the divine light. His expression is both powerful and serene, exuding wisdom. His golden armor reflects the cosmic energy surrounding him, and faint embers float in the air. Hyper-realistic, ultra-detailed, cinematic 8K fantasy portrait.\",\n  \n  \"90\": \"Back view - Solaris Sentinel’s long, ember-like hair cascades down his gilded armor, flickering like a living flame. His cape, woven from strands of pure sunlight, flows with a supernatural radiance. The air behind him shimmers with golden embers, trailing in his wake. Hyper-detailed, cinematic, 8K resolution, godly presence.\",\n  \n  \"105\": \"Left-side profile view - Solaris Sentinel, his determined gaze looking into the distance. His fiery hair moves gently with a celestial breeze, and the glowing sigils on his armor pulsate with power. His battle-worn armor carries the mark of countless victories. Hyper-detailed, cinematic, ultra-realistic, 8K fantasy portrait.\",\n  \n  \"120\": \"Front view - Solaris Sentinel stands with an ethereal glow surrounding him. His piercing golden eyes shine with unwavering conviction, and the celestial sigils carved into his skin pulse with radiant energy. His form seems almost too powerful for this realm, exuding the presence of a guardian from another plane. Hyper-realistic, ultra-detailed, cinematic 8K fantasy portrait.\"\n\n"
+          ;
+              break;
+            case "/images/male_2.jpeg":
+              BackgroundPrompt = "A peaceful countryside with golden fields";
+              CharacterPrompt = "A humble farmer with a straw hat and a gentle smile";
+              break;
+            case "/images/female_1.jpeg":
+              BackgroundPrompt = "A magical forest filled with glowing fireflies";
+              CharacterPrompt = "A mystical sorceress in an enchanted robe";
+              break;
+            case "/images/female_2.jpeg":
+              BackgroundPrompt = "A vibrant futuristic city with neon lights";
+              CharacterPrompt = "A stylish hacker with a high-tech gadget";
+              break;
+            default:
+              BackgroundPrompt = "A default background";
+              CharacterPrompt = "A generic character description";
+          }
+        
+          return { BackgroundPrompt, CharacterPrompt };
+        };
+        
+        const { BackgroundPrompt, CharacterPrompt } = getPromptsForCharacter(character);
+        
       const jsonData = {
         "1": {
           "inputs": {
@@ -653,7 +653,7 @@ export default function CaptureScreen() {
       console.log(`payload  json ${payload.jsonData}`);
 
       // Step 4: Send data to your API
-      const response = await fetch("http://192.168.1.99:5000/api/videos", {
+      const response = await fetch("https://brown-doors-lick.loca.lt/process-video", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -679,25 +679,26 @@ export default function CaptureScreen() {
     setFailed(false);
     setRecordedVideo(null);
     setCountdown(0);
+    navigate('/form'); 
   };
-
-  return (
+  return  (
     <div
-      className="flex items-center justify-center min-h-screen bg-center bg-cover"
+      className="flex items-start min-h-screen bg-center bg-cover"
       style={{ backgroundImage: "url(/images/iPad.png)" }}
     >
-      <div className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <div className="flex mt-20 flex-col items-center w-full flex-1 px-4 sm:px-8 lg:px-20 text-center">
         <div className="w-full max-w-2xl">
           <h1
-            className="text-4xl mt-20 font-semibold text-white mb-8"
+            className="text-2xl sm:text-2xl lg:text-2xl mt-10 sm:mt-15 font-semibold text-white mb-4 sm:mb-8"
             style={{ fontFamily: "Arial, sans-serif" }}
           >
-            SMILE FOR
-            <br />
-            THE CAMERA
+            SMILE FOR THE CAMERA
+            {/* <br /> */}
+           
           </h1>
 
-          <div className="relative w-full aspect-video rounded-lg overflow-hidden flex justify-center items-center">
+          {/* Video Container */}
+          <div className="relative w-auto max-h-[60vh] aspect-[9/16] rounded-lg overflow-hidden flex justify-center items-center bg-gray-200 mx-auto">
             {/* Live camera feed */}
             <video
               ref={videoRef}
@@ -716,27 +717,23 @@ export default function CaptureScreen() {
               style={{ display: recordedVideo ? "block" : "none" }}
             />
 
+            {/* Countdown */}
             {countdown > 0 && (
-              <div className="absolute inset-0 flex items-center justify-center text-8xl font-bold text-white">
+              <div className="absolute inset-0 flex items-center justify-center text-6xl sm:text-8xl font-bold text-white">
                 {countdown}
               </div>
             )}
           </div>
 
+          {/* Buttons */}
           <div className="mt-8">
             {!recordedVideo ? (
               <button
+                className="w-full sm:w-[350px] h-[60px] sm:h-[75px] bg-cover bg-center font-bold text-red-500 rounded focus:outline-none focus:shadow-outline"
                 style={{
                   backgroundImage: "url(/images/redbutton.png)",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  width: "350px",
-                  height: "75px",
                   fontFamily: "Arial, sans-serif",
-                  color: "red",
-                  fontWeight: "bold",
-                  fontSize: "24px",
-                  border: "none",
+                  fontSize: "20px",
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                 }}
                 onClick={startCountdown}
@@ -746,39 +743,27 @@ export default function CaptureScreen() {
               </button>
             ) : (
               <>
-                <div className="mb-4">
+                <div className="mb-4 flex flex-row justify-center align-center gap-3">
                   <button
+                    className="w-full sm:w-[250px] h-[60px] sm:h-[75px] bg-cover bg-center font-bold text-red-500 rounded focus:outline-none focus:shadow-outline"
                     style={{
                       backgroundImage: "url(/images/redbutton.png)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "350px",
-                      height: "75px",
                       fontFamily: "Arial, sans-serif",
-                      color: "red",
-                      fontWeight: "bold",
-                      fontSize: "24px",
-                      border: "none",
+                      fontSize: "20px",
                       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                     }}
                     onClick={handleRetake}
                   >
                     Retake
                   </button>
-                </div>
-                <div>
+                {/* </div>
+                <div> */}
                   <button
+                    className="w-full sm:w-[250px] h-[60px] sm:h-[75px] bg-cover bg-center font-bold text-red-500 rounded focus:outline-none focus:shadow-outline"
                     style={{
                       backgroundImage: "url(/images/greenbutton.png)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "350px",
-                      height: "75px",
                       fontFamily: "Arial, sans-serif",
-                      color: "red",
-                      fontWeight: "bold",
-                      fontSize: "24px",
-                      border: "none",
+                      fontSize: "20px",
                       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                     }}
                     onClick={handleSend}
@@ -803,7 +788,9 @@ export default function CaptureScreen() {
           }}
         >
           <div className="text-center animate-pulse">
-            <div className="text-white text-6xl font-bold mb-4">Sending...</div>
+            <div className="text-white text-4xl sm:text-6xl font-bold mb-4">
+              {/* Sending... */}
+            </div>
             <div className="flex justify-center">
               <div className="w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
             </div>
@@ -821,13 +808,15 @@ export default function CaptureScreen() {
             backgroundPosition: "center",
           }}
         >
-          <div className="bg-white p-10 rounded-lg text-center shadow-2xl transform transition-all duration-300 scale-95 hover:scale-100">
-            <h2 className="text-4xl font-bold text-red-600 mb-6">Failed</h2>
-            <p className="text-gray-700 text-lg mb-8">
+          <div className="bg-white p-6 sm:p-10 rounded-lg text-center shadow-2xl transform transition-all duration-300 scale-95 hover:scale-100">
+            <h2 className="text-2xl sm:text-4xl font-bold text-red-600 mb-4 sm:mb-6">
+              Failed
+            </h2>
+            <p className="text-gray-700 text-base sm:text-lg mb-6 sm:mb-8">
               Something went wrong. Please try again.
             </p>
             <button
-              className="px-8 py-3 bg-red-500 text-white rounded-lg hover:bg-red-700 transition-all duration-200 transform hover:scale-105"
+              className="px-6 sm:px-8 py-2 sm:py-3 bg-red-500 text-white rounded-lg hover:bg-red-700 transition-all duration-200 transform hover:scale-105"
               onClick={handleTryAgain}
             >
               Try Again
@@ -837,4 +826,5 @@ export default function CaptureScreen() {
       )}
     </div>
   );
+
 }

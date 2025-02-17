@@ -664,6 +664,7 @@ export default function CaptureScreen() {
       if (!response.ok) {
         throw new Error("Failed to send data to API");
       }
+//updated//
 
       // Navigate to success page
       navigate("/success");

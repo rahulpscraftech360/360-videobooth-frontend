@@ -653,7 +653,7 @@ export default function CaptureScreen() {
       console.log(`payload  json ${payload.jsonData}`);
 
       // Step 4: Send data to your API
-      const response = await fetch("https://brown-doors-lick.loca.lt/process-video", {
+      const response = await fetch("https://clownfish-app-8eylc.ondigitalocean.app/process-video", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Initialize Supabase client
-const supabaseUrl = "https://fuhqxfbyvrklxggecynt.supabase.co";
+const supabaseUrl = "https://wgolrbrzumjfgqapvlxq.supabase.co";
 const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1aHF4ZmJ5dnJrbHhnZ2VjeW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc4ODk0MzcsImV4cCI6MjA1MzQ2NTQzN30.0r2cHr8g6nNwjaVaVGuXjo9MXNFu9_rx40j5Bb3Ib2Q";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnb2xyYnJ6dW1qZmdxYXB2bHhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NDMyNjMsImV4cCI6MjA1OTQxOTI2M30.X8EqAzG1-ndCdhEenr33ZWHZqP0gpCCnWYMjLouVTDE";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default function CaptureScreen() {
@@ -1129,7 +1129,7 @@ export default function CaptureScreen() {
       console.log(`payload  json ${payload.jsonData}`);
 
       // Step 4: Send data to your API
-      const response = await fetch("https://clownfish-app-8eylc.ondigitalocean.app/process-video", {
+      const response = await fetch("http://localhost:8000/process-video", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function FormScreen() {
-  const [formData, setFormData] = useState({ name: '', email: '', gender: '' });
+  const [formData, setFormData] = useState({  name: 'John Doe',
+    email: 'john.doe@example.com',
+    gender: 'male',  });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -29,6 +31,7 @@ export default function FormScreen() {
         <form onSubmit={handleSubmit} className="w-full max-w-md">
           <input
             type="text"
+            
             placeholder="Enter your name"
             className="block w-full px-4 py-3 mt-2 text-xl font-semibold text-gray-800 bg-white border border-gray-300 rounded shadow appearance-none focus:outline-none focus:ring-blue-600 focus:border-blue-600 peer"
             style={{ fontFamily: 'Arial, sans-serif', height: '75px', backgroundImage: 'url(/images/bluebutton.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}

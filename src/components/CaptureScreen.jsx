@@ -640,7 +640,7 @@ export default function CaptureScreen() {
           }
         }
       }
- const jsondata2={
+      const jsondata2={
   "1": {
     "inputs": {
       "ckpt_name": "realism.safetensors",

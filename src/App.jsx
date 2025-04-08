@@ -6,7 +6,7 @@ import IdleScreen from './components/IdleScreen';
 import SelectCharacter from './components/SelectCharacter';
 import SuccessScreen from './components/SuccessScreen';
 import TakePhoto from './components/TakePhoto';
-
+import ComfyUIPromptSender from './components/ComfyUIPromptSender';
 
 
 
@@ -17,6 +17,7 @@ export default function App() {
       <Route path="/" element={<IdleScreen />} />
         <Route path="/form" element={<FormScreen />} />
         <Route path="/take-photo" element={<TakePhoto />} />
+        <Route path="/api" element={<ComfyUIPromptSender />} />
 
         <Route path="/camera" element={<CaptureScreen />} />
         <Route path="/select-character" element={<SelectCharacter />} />
